@@ -33,11 +33,11 @@ window.addEventListener('load', () => {
             }
 
             if (window.location.pathname.includes('/join')) {
-                window.location.href = `${window.location.protocol}//${window.location.host}/index.html`;
+                window.location.href = `${window.location.protocol}//${window.location.host}/app/index.html`;
             }
         } else {
             if (!window.location.pathname.includes('/join')) {
-                window.location.href = `${window.location.protocol}//${window.location.host}/join/index.html`;
+                window.location.href = `${window.location.protocol}//${window.location.host}/app/join/index.html`;
             }
         }
     });
