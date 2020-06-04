@@ -42,3 +42,11 @@ window.addEventListener('load', () => {
         }
     });
 });
+
+function redirect(uri) {
+    if (navigator.userAgent.match(/Android/i)) {
+        document.location.replace(uri);
+    } else {
+        window.location.replace(uri);
+    }
+}
