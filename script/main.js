@@ -37,7 +37,7 @@ window.addEventListener('load', () => {
             }
         } else {
             if (!window.location.pathname.includes('/join')) {
-                redirect('../join/index.html');
+                redirect('./join/index.html');
             }
         }
     });
