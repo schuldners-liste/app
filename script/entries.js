@@ -620,8 +620,14 @@ window.addEventListener('load', () => {
                 }
 
                 // format total sum
-                sum.textContent = `${totalSum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}€`;
-                sum.textContent = sum.textContent.replace('.', ',');
+                totalSum = totalSum.toString();
+                const parts = totalSum.split('.');
+                
+                if (parts.length > 1) {
+                    totalSum = `${parts[0]}.${Math.round(parseFloat(`${parts[1].substring(0, 2)}.${parts[1].substring(2)}`))}`;
+                }
+
+                sum.textContent = `${totalSum.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}€`.replace('.', ',');
 
                 newEntry.addEventListener('click', () => {
                     const detailedBox = document.getElementById('detailed' + entries.name.replace(' ', ''));
@@ -1372,11 +1378,15 @@ function calculatePersonSum(name) {
 
             for (const entry of entriesSum) {
                 if (entry.textContent.includes('€') && typeof parseFloat(entry.textContent.replace(/[^0-9,.]/ig, '')) === 'number') {
+                    console.log(sum);
                     sum += parseFloat(entry.textContent.replace(',', '.').replace(/[^0-9,.]/ig, ''));
                 }
             }
 
-            output.textContent = `${sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}€`.replace('.', ',');
+            const parts = sum.toString().split('.');
+            sum = `${parts[0]}.${Math.round(parseFloat(`${parts[1].substring(0, 2)}.${parts[1].substring(2)}`))}`;
+
+            output.textContent = `${sum.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}€`.replace('.', ',');
         }
     }
 }
