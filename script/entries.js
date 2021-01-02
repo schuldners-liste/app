@@ -1222,7 +1222,7 @@ window.addEventListener('load', () => {
         }
 
         const restoreEntryIcon = document.createElement('i');
-        restoreEntryIcon.setAttribute('class', 'fas fa-redo-alt');
+        restoreEntryIcon.setAttribute('class', 'fas fa-trash-restore');
 
         restoreEntryIcon.addEventListener('click', () => {
             const dataToRestore = {
