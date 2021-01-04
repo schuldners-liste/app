@@ -184,3 +184,34 @@
 #editWarningWrapper h2 {
     text-align: center;
 }
+
+@media screen and (min-aspect-ratio: 1/1) {
+    .entry {
+        width: 50vw;
+        font-size: 1vw;
+        padding: 0 1.5vw;
+    }
+
+    #detailedEntriesWrapper .detailedEntry, #deletedDetailedEntriesWrapper .detailedEntry {
+        width: 50vw;
+        font-size: 1vw;
+        padding: .25vw .5vw;
+    }
+
+    #detailedEntriesWrapper .detailedEntry p, #deletedDetailedEntriesWrapper .detailedEntry p {
+        margin: .5vh 0;
+    }
+
+    #detailedEntriesWrapper .detailedEntry p:nth-last-child(1) {
+        font-size: .75vw;
+    }
+
+    #detailedEntriesWrapper .entryIconWrapper, #deletedDetailedEntriesWrapper .entryIconWrapper {
+        font-size: 1.2vw;
+        margin: .1vh 0;
+    }
+
+    .entry .arrowAndMoneyWrapper p {
+        margin: 0 .5vw;
+    }
+}
