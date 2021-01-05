@@ -87,3 +87,31 @@
 #cancelAuthorize {
     background: #ee5a5a !important;
 }
+
+@media screen and (min-aspect-ratio: 1/1) {
+    .changeInformationBox {
+        width: 50vw;
+        font-size: 1vw;
+    }
+
+    .changeInformationBox input, #authorizeWrapper input {
+        font-size: .8vw;
+    }
+
+    .changeInformationBox .button, #authorizeWrapper .button {
+        width: 20%;
+        margin: 1.5vh 0 1.5vh 40vw;
+    }
+
+    .changeInformationBox .danger {
+        margin: 1.5vh 0 !important;
+    }
+
+    #authorizeWrapper p {
+        font-size: .9vw;
+    }
+    
+    #authorizeWrapper .button {
+        font-size: 1vw;
+    }
+}
