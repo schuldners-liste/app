@@ -110,6 +110,7 @@
         width: 15%;
         margin: 1.5vh 0 1.5vh 43vw;
         font-size: .7vw;
+        cursor: pointer;
     }
 
     .changeInformationBox .danger {
