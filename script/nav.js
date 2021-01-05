@@ -7,8 +7,10 @@ window.addEventListener('load', () => {
   let touchmoveAllowed = false;
   sessionStorage.setItem('isNavTriggered', false);
 
-  document.getElementById('nav').style.right =
+  if (window.outerWidth < window.outerHeight) {
+    document.getElementById('nav').style.right =
     (window.innerWidth / 100) * 110 + 'px';
+  }
 
   document.body.addEventListener('touchstart', eve => {
     const maxRight = (window.innerWidth / 100) * 20;
