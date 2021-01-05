@@ -66,7 +66,7 @@
 #authorizeWrapper {
     width: 80vw;
     height: 50vh;
-    padding: 25vh 10vw;
+    padding: 25vh 25vw;
     position: fixed;
     top: 0;
     left: 0;
@@ -89,18 +89,27 @@
 }
 
 @media screen and (min-aspect-ratio: 1/1) {
-    .changeInformationBox {
+    .changeInformationBox, #authorizeWrapper {
         width: 50vw;
         font-size: 1vw;
     }
 
-    .changeInformationBox input, #authorizeWrapper input {
+    .changeInformationBox h3 {
+        font-size: 1vw;
+    }
+
+    #authorizeWrapper h2 {
+        font-size: 1.1vw;
+    }
+
+    .changeInformationBox input, #authorizeWrapper input, .changeInformationBox p {
         font-size: .8vw;
     }
 
     .changeInformationBox .button, #authorizeWrapper .button {
-        width: 20%;
-        margin: 1.5vh 0 1.5vh 40vw;
+        width: 15%;
+        margin: 1.5vh 0 1.5vh 43vw;
+        font-size: .7vw;
     }
 
     .changeInformationBox .danger {
@@ -109,9 +118,5 @@
 
     #authorizeWrapper p {
         font-size: .9vw;
-    }
-    
-    #authorizeWrapper .button {
-        font-size: 1vw;
     }
 }
