@@ -214,4 +214,9 @@
     .entry .arrowAndMoneyWrapper p {
         margin: 0 .5vw;
     }
+
+    #entriesErrorMessage, #deletedEntriesErrorMessage {
+        width: 50%;
+        font-size: 1vw;
+    }
 }
