@@ -67,5 +67,6 @@
 
     #feedbackContent .button {
         font-size: 1vw;
+        cursor: pointer;
     }
 }
