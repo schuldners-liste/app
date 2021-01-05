@@ -48,3 +48,24 @@
     border-radius: 3px;
     background: #03a87c;
 }
+
+@media screen and (min-aspect-ratio: 1/1) {
+    #feedbackWindow {
+        font-size: 1vw;
+    }
+
+    #feedbackContent {
+        width: 50vw;
+    }
+
+    #feedbackContent input, #feedbackContent textarea {
+        width: 100%;
+        margin: 1.5vh 0;
+        padding: 1vh .5vw;
+        font-size: .9vw;
+    }
+
+    #feedbackContent .button {
+        font-size: 1vw;
+    }
+}
