@@ -1382,10 +1382,12 @@ function calculatePersonSum(name) {
                 }
             }
 
-            const parts = sum.toString().split('.');
-            sum = `${parts[0]}.${Math.round(parseFloat(`${parts[1].substring(0, 2)}.${parts[1].substring(2)}`))}`;
+            if (sum.toString().includes('.')) {
+                const parts = sum.toString().split('.');
+                sum = `${parts[0]}.${Math.round(parseFloat(`${parts[1].substring(0, 2)}.${parts[1].substring(2)}`))}`;
+            }
 
-            output.textContent = `${sum.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}€`.replace('.', ',');
+            output.textContent = `${sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}€`.replace('.', ',');
         }
     }
 }
