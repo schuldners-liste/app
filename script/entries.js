@@ -1369,7 +1369,7 @@ function calculatePersonSum(name) {
     ];
 
     for (const info of screenInfos) {
-        let entriesSum = document.getElementById(info.entriesSum)
+        let entriesSum = document.getElementById(info.entriesSum);
         const output = document.querySelector(info.output);
 
         if (entriesSum !== null && output !== null) {
