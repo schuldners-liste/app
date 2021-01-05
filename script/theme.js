@@ -72,7 +72,16 @@ function printThemes(themes, isFirstTime) {
                 timer = setTimeout(touchHold, duration);
             });
 
+            newTheme.addEventListener('mousedown', () => {
+                timer = setTimeout(touchHold, duration);
+            });
+
             newTheme.addEventListener('touchend', () => {
+                if (timer)
+                clearTimeout(timer);
+            });
+
+            newTheme.addEventListener('mouseup', () => {
                 if (timer)
                 clearTimeout(timer);
             });
@@ -165,7 +174,6 @@ function printThemes(themes, isFirstTime) {
         newTheme.appendChild(defaultView);
         newTheme.appendChild(touchHoldView);
         contentWrapper.appendChild(newTheme);
-        i++;
     }
 
     if (isFirstTime) {
