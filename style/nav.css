@@ -84,7 +84,7 @@
   }
 
   #textWrapper {
-    width: 70%;
+    width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -127,7 +127,7 @@
     width: 10vw !important;
   }
 
-  #infoNav, #securityNav, #supportNav {
+  #infoNav {
     display: none !important;
   }
 }
