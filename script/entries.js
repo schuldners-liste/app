@@ -35,7 +35,7 @@ window.addEventListener('load', () => {
 
     // switch types when clicked
     moneyType.addEventListener('click', () => {
-        currentType.style.left = '20vw';
+        window.outerWidth > window.outerHeight ? currentType.style.left = '1.5vw' : currentType.style.left = '20vw';
         createMoneyEntry.style.left = 0;
         createObjectEntry.style.left = '105vw';
 
@@ -45,7 +45,7 @@ window.addEventListener('load', () => {
     });
 
     objectType.addEventListener('click', () => {
-        currentType.style.left = '60vw';
+        window.outerWidth > window.outerHeight ? currentType.style.left = '21.5vw' : currentType.style.left = '60vw';
         createObjectEntry.style.left = 0;
         createMoneyEntry.style.left = '-105vw';
 
@@ -1369,7 +1369,7 @@ function calculatePersonSum(name) {
     ];
 
     for (const info of screenInfos) {
-        let entriesSum = document.getElementById(info.entriesSum)
+        let entriesSum = document.getElementById(info.entriesSum);
         const output = document.querySelector(info.output);
 
         if (entriesSum !== null && output !== null) {
@@ -1378,15 +1378,16 @@ function calculatePersonSum(name) {
 
             for (const entry of entriesSum) {
                 if (entry.textContent.includes('€') && typeof parseFloat(entry.textContent.replace(/[^0-9,.]/ig, '')) === 'number') {
-                    console.log(sum);
                     sum += parseFloat(entry.textContent.replace(',', '.').replace(/[^0-9,.]/ig, ''));
                 }
             }
 
-            const parts = sum.toString().split('.');
-            sum = `${parts[0]}.${Math.round(parseFloat(`${parts[1].substring(0, 2)}.${parts[1].substring(2)}`))}`;
+            if (sum.toString().includes('.')) {
+                const parts = sum.toString().split('.');
+                sum = `${parts[0]}.${Math.round(parseFloat(`${parts[1].substring(0, 2)}.${parts[1].substring(2)}`))}`;
+            }
 
-            output.textContent = `${sum.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}€`.replace('.', ',');
+            output.textContent = `${sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}€`.replace('.', ',');
         }
     }
 }
