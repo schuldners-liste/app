@@ -35,7 +35,7 @@ window.addEventListener('load', () => {
 
     // switch types when clicked
     moneyType.addEventListener('click', () => {
-        currentType.style.left = '20vw';
+        window.outerWidth > window.outerHeight ? currentType.style.left = '1.5vw' : currentType.style.left = '20vw';
         createMoneyEntry.style.left = 0;
         createObjectEntry.style.left = '105vw';
 
@@ -45,7 +45,7 @@ window.addEventListener('load', () => {
     });
 
     objectType.addEventListener('click', () => {
-        currentType.style.left = '60vw';
+        window.outerWidth > window.outerHeight ? currentType.style.left = '21.5vw' : currentType.style.left = '60vw';
         createObjectEntry.style.left = 0;
         createMoneyEntry.style.left = '-105vw';
 
