@@ -191,3 +191,62 @@
 #customThemeButtonBar .button:nth-child(3) {
     background: #ee5a5a;
 }
+
+@media screen and (min-aspect-ratio: 1/1) {
+    #themeOverview, #customThemeWrapper {
+        width: 50vw;
+        padding: 0 25vw;
+    }
+
+    #selectThemes, #createTheme {
+        width: 100%;
+    }
+
+    .theme {
+        width: 100%;
+        padding: 0 1.5vw;
+    }
+
+    .theme svg {
+        width: 35%;
+    }
+
+    .bannerWrapper {
+        width: 30%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .colorWrapper div {
+        font-size: 1.5vw;
+    }
+
+    .touchHoldView {
+        font-size: 1vw;
+    }
+
+    .touchHoldView > div > i {
+        margin-left: .5vw;
+    }
+
+    #customThemeWrapper input {
+        width: 50vw;
+    }
+
+    #customThemeWrapper svg {
+        width: 30%;
+    }
+
+    #customThemeButtonBar {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #customThemeButtonBar .button {
+        width: 45%;
+        padding: 1.3vh 1vw;
+        font-size: 1vw;
+    }
+}
