@@ -17,16 +17,17 @@
     font-family: 'Roboto', sans-serif;
     border: none;
     border-radius: 3px;
-    box-shadow: 1px 1px 9px 0px #dbdbdb;
+    box-shadow: 1px 1px 9px 0px var(--shadow-color);
     outline: none;
     border-bottom: 2px solid lightgray;
+    background: transparent;
     resize: none;
     transition: border-color 300ms ease-in-out;
 }
 
 #subjectFDB, #messageFDB {
     margin: 0;
-    color: red;
+    color: var(--button-bad-bg);
     font-size: 3.5vmin;
 }
 
@@ -35,18 +36,18 @@
 }
 
 #feedbackContent input:focus, #feedbackContent textarea:focus {
-    border-color: #486491;
+    border-color: var(--main);
 }
 
 #feedbackContent .button {
     width: 98%;
     margin: 1.5vh 0;
     padding: 1.3vh 1vw;
-    color: #fff;
+    color: var(--font-color);
     text-align: center;
     font-size: 4vmin;
     border-radius: 3px;
-    background: #03a87c;
+    background: var(--button-ok-bg);
 }
 
 @media screen and (min-aspect-ratio: 1/1) {
@@ -68,5 +69,9 @@
     #feedbackContent .button {
         font-size: 1vw;
         cursor: pointer;
+    }
+
+    #subjectFDB, #messageFDB {
+        font-size: .7vw;
     }
 }

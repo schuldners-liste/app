@@ -1,9 +1,9 @@
 #nav {
   height: 100vh;
-  background-color: white;
+  background: var(--header-bg);
   width: 80vw;
   margin: 0 auto;
-  box-shadow: 2px 0px 7px 1px rgba(189, 189, 189, 0.7);
+  box-shadow: 2px 0px 7px 1px var(--shadow-color);
   position: fixed;
   top: 0;
   right: 110vw;

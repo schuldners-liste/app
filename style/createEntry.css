@@ -1,6 +1,7 @@
 #switchType {
     width: 100%;
     height: 3.75vh;
+    margin-top: 2vh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -22,14 +23,14 @@
     position: absolute;
     bottom: 0;
     left: 20vw;
-    background: #486491;
+    background: var(--main);
     transition: left 300ms ease-in-out;
 }
 
 .createEntryWrapper {
     width: 90vw;
-    padding: 0 5vw;
     height: 75.25vh;
+    padding: 0 5vw;
     position: fixed;
     bottom: 10vh;
     left: 0;
@@ -51,10 +52,10 @@
     padding: 3vw;
     margin: 2vh 0;
     text-align: center;
-    background: #03a87c;
-    color: white;
-    border: #486491;
-    box-shadow: 1px 1px 9px 0px #dbdbdb;
+    background: var(--button-ok-bg);
+    color: var(--font-color);
+    border: var(--main);
+    box-shadow: 1px 1px 9px 0px var(--shadow-color);
     letter-spacing: .35px;
     user-select: none;
     outline: none;
@@ -69,8 +70,8 @@
     position: absolute;
     top: 10vh;
     left: 20vw;
-    box-shadow: 1px 1px 9px 0px #dbdbdb;
-    background: white;
+    box-shadow: 1px 1px 9px 0px var(--shadow-color);
+    background: var(--header-bg);
     border-radius: 5px;
     font-size: 4vmin;
     transform: scale(0.4);
@@ -81,11 +82,13 @@
 }
 
 .selectPersonPopUp input {
+    width: 100%;
     border: none;
     border-bottom: 2px solid lightgray;
-    width: 100%;
     font-size: 4vmin;
+    background: transparent;
     font-family: 'Lato', sans-serif;
+    color: var(--font-color);
     padding: .1rem;
     margin: .5em 0;
     outline: none;
@@ -93,7 +96,7 @@
 }
 
 .selectPersonPopUp input:focus {
-    border-color: #486491;
+    border-color: var(--main);
 }
 
 .selectPersonPopUp .button {
@@ -102,10 +105,10 @@
     padding: 3vw;
     margin: 2vh 0 2vh 0;
     text-align: center;
-    background: #486491;
-    color: white;
-    border: #486491;
-    box-shadow: 1px 1px 9px 0px #dbdbdb;
+    background: var(--main);
+    color: var(--font-color);
+    border: var(--main);
+    box-shadow: 1px 1px 9px 0px var(--shadow-color);
     letter-spacing: .35px;
     user-select: none;
     outline: none;
@@ -114,7 +117,7 @@
 }
 
 .createEntryWrapper .feedback {
-    color: red;
+    color: var(--button-bad-bg);
     font-size: 3.5vmin;
     text-align: left;
     margin: .5vh 0 0 0;
@@ -137,13 +140,14 @@
     border-bottom: 2px solid lightgray;
     font-size: 4vmin;
     font-family: 'Lato', sans-serif;
+    color: var(--font-color);
     outline: none;
     background: transparent;
     transition: 200ms ease-in-out border-color;
 }
 
 .getDataBox input:focus {
-    border-color: #486491;
+    border-color: var(--main);
 }
 
 #disableMoneyPersonSelection, #disableObjectPersonSelection {
@@ -160,7 +164,6 @@
 @media screen and (min-aspect-ratio: 1/1) {
     #switchType {
         width: 30%;
-        margin-top: 1vh;
         justify-content: space-between;
     }
 
@@ -175,7 +178,7 @@
         position: absolute;
         bottom: 0;
         left: 1.5vw;
-        background: #486491;
+        background: var(--main);
         transition: left 300ms ease-in-out;
     }
 

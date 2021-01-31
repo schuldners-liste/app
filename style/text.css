@@ -10,7 +10,7 @@ iframe {
 }
 
 iframe p {
-    color: red;
+    color: var(--button-bad-bg);
 }
 
 #securityWindow p {

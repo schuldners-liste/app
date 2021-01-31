@@ -24,7 +24,7 @@
     margin: 1vh 0;
     display: flex;
     align-items: center;
-    border: 1px solid #486491;
+    border: 1px solid var(--main);
     border-radius: 3px;
     user-select: none;
 }
@@ -63,11 +63,11 @@
 }
 
 .touchHoldView > div:nth-child(2) {
-    color: #ee5a5a;
+    color: var(--button-bad-bg);
 }
 
 .touchHoldView > div:nth-child(3) {
-    color: #03a87c;
+    color: var(--button-ok-bg);
 }
 
 .bannerWrapper {
@@ -93,7 +93,7 @@
     width: 43%;
     height: 5vh;
     border-radius: 3px;
-    box-shadow: 1px 1px 9px 0px #dbdbdb;
+    box-shadow: 1px 1px 9px 0px var(--shadow-color);
 }
 
 .colorWrapper div {
@@ -109,7 +109,7 @@
 }
 
 .colorWrapper div:nth-child(2) i {
-    color: #353535;
+    color: var();
     opacity: .6;
 }
 
@@ -118,7 +118,7 @@
 }
 
 .iconWrapper i {
-    color: #fff;
+    color: var(--bg);
     margin-left: 3vw;
     transition: color 250ms ease-in-out;
 }
@@ -128,7 +128,7 @@
 }
 
 #customTheme .iconWrapper i {
-    color: #353535;
+    color: var(--icon-color);
 }
 
 #customThemeWrapper {

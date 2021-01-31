@@ -5,7 +5,7 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    background: white;
+    background: var(--header-bg);
     display: flex;
     justify-content: flex-start;
     align-items: center;

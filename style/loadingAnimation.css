@@ -28,7 +28,7 @@
   width: 11px;
   height: 11px;
   border-radius: 50%;
-  background: #666666;
+  background: var(--loader-ellipsis);
   -webkit-animation-timing-function: cubic-bezier(0, 1, 1, 0);
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }

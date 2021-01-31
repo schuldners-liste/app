@@ -9,11 +9,13 @@
 }
 
 .changeInformationBox input, #authorizeWrapper input {
+    width: 100%;
     border: none;
     border-bottom: 2px solid lightgray;
-    width: 100%;
+    background: transparent;
     font-size: 4vmin;
     font-family: 'Lato', sans-serif;
+    color: var(--font-color);
     padding: .1rem;
     margin: .5em 0;
     outline: none;
@@ -21,7 +23,7 @@
 }
 
 .changeInformationBox input:focus, #authorizeWrapper input:focus {
-    border-color: #486491;
+    border-color: var(--main);
 }
 
 .changeInformationBox .button, #authorizeWrapper .button {
@@ -30,22 +32,22 @@
     padding: 1.25vh 0;
     margin: 1.5vh 0 1.5vh 41vw;
     text-align: center;
-    background: #03a87c;
-    color: white;
-    border: #486491;
-    box-shadow: 1px 1px 9px 0px #dbdbdb;
+    background: var(--button-ok-bg);
+    color: var(--font-color);
+    border: var(--main);
+    box-shadow: 1px 1px 9px 0px var(--shadow-color);
     letter-spacing: .35px;
     user-select: none;
     outline: none;
 }
 
 .changeInformationBox .danger {
-    background: #ee5a5a;
+    background: var(--button-bad-bg);
     margin: 1.5vh 0;
 }
 
 #newUsernameFDB, #newEmailFDB, #newPasswordFDB, #authorizePWFDB {
-    color: red;
+    color: var(--button-bad-bg);
     margin: 0;
 }
 
@@ -53,10 +55,10 @@
     max-width: 90vw;
     position: fixed;
     bottom: 15vh;
-    background: #1b3647;
-    color: #fff;
+    background: var(--success-bg);
+    color: var(--success-color);
     border-radius: 3px;
-    box-shadow: 1px 1px 9px 0px #dbdbdb;
+    box-shadow: 1px 1px 9px 0px var(--shadow-color);
     padding: 1.4vh 3vw;
     opacity: 0;
     transform: scale(.6);
@@ -70,7 +72,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    background: #fff;
+    background: var(--bg);
 }
 
 #authorizeWrapper p {
@@ -85,7 +87,7 @@
 }
 
 #cancelAuthorize {
-    background: #ee5a5a !important;
+    background: var(--button-bad-bg) !important;
 }
 
 @media screen and (min-aspect-ratio: 1/1) {

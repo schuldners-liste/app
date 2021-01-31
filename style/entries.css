@@ -3,7 +3,7 @@
     width: 70vw;
     padding: 0 5vw;
     margin: 1vh 0;
-    border: 1px solid #486491;
+    border: 1px solid var(--main);
     border-radius: 3px;
     font-size: 4.5vmin;
     display: flex;
@@ -26,7 +26,7 @@
 }
 
 #entriesErrorMessage, #deletedEntriesErrorMessage {
-    color: red;
+    color: var(--button-bad-bg);
     width: 80vw;
     text-align: left;
     font-size: 4vmin;
@@ -62,7 +62,7 @@
 
 #detailedEntriesWrapper .detailedEntry, #deletedDetailedEntriesWrapper .detailedEntry {
     width: 80vw;
-    border: 1px solid #486491;
+    border: 1px solid var(--main);
     border-radius: 3px;
     margin: 2vh 0;
     padding: 0 2vw;
@@ -122,8 +122,8 @@
     margin: 1vh 0;
 }
 
-#editEntryWrapper .getDataBox:nth-child(1) input {
-    color: black;
+#editEntryWrapper input {
+    color: var(--font-color);
 }
 
 #editButtonBar {
@@ -139,19 +139,19 @@
     width: 98%;
     margin: 1.8vh 0;
     padding: 1.3vh 1vw;
-    color: #fff;
+    color: var(--font-color);
     text-align: center;
     font-size: 4vmin;
     border-radius: 3px;
-    box-shadow: 1px 1px 9px 0px #dbdbdb;
+    box-shadow: 1px 1px 9px 0px var(--shadow-color);
 }
 
 #editEntryWrapper #editButtonBar .button:nth-child(1), #editCanceldCancel {
-    background: #03a87c;
+    background: var(--button-ok-bg);
 }
 
 #editEntryWrapper #editButtonBar .button:nth-child(2), #editConfirmedCancel {
-    background: #ee5a5a;
+    background: var(--button-bad-bg);
 }
 
 #editWarningWrapper {
@@ -175,8 +175,8 @@
     justify-content: space-between;
     flex-direction: column;
     padding: 0 4vw;
-    background: #fff;
-    box-shadow: 1px 1px 9px 0px #dbdbdb;
+    background: var(--font-color);
+    box-shadow: 1px 1px 9px 0px var(--shadow-color);
     border-radius: 3px;
     margin-bottom: 8vh;
 }

@@ -17,7 +17,7 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background: white;
+    background: var(--bg);
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -44,8 +44,8 @@
     padding: 3vw;
     margin: 2vh 0 2vh 0;
     text-align: center;
-    background: #486491;
-    color: white;
+    background: var(--main);
+    color: var(--font-color);
     box-shadow: 1px 1px 9px 0px #dbdbdb;
     letter-spacing: .35px;
     user-select: none;
@@ -60,15 +60,15 @@
     width: 100%;
     margin: 2vh 0 2vh 0;
     padding: 2vw 3vw;
-    background: #fff;
-    color: #4285F4;
+    background: var(--font-color);
+    color: var(--google);
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
     font-family: 'Roboto', 'sans serif';
     border-radius: 3px;
-    box-shadow: 1px 1px 9px 0px #dbdbdb;
+    box-shadow: 1px 1px 9px 0px var(--shadow-color);
     user-select: none;
 }
 
@@ -104,7 +104,7 @@
 #passwordForgot, #goToSignUp, #goToSignIn {
     width: 70vw;
     text-align: left;
-    color: cornflowerblue;
+    color: var(--link);
     text-decoration: underline;
     font-size: 4vmin;
 }
@@ -126,7 +126,7 @@
 }
 
 #logInScreen input:focus {
-    border-color: #486491;
+    border-color: var(--main);
 }
 
 .btnWrapper {
@@ -139,10 +139,10 @@
     border-radius: 3px;
     outline: none;
     padding: 3vmin;
-    background: #03a87c;
-    color: white;
-    border: #03a87c;
-    box-shadow: 1px 1px 9px 0px #dbdbdb;
+    background: var(--button-ok-bg);
+    color: var(--button-ok-color);
+    border: var(--button-ok-bg);
+    box-shadow: 1px 1px 9px 0px var(--shadow-color);
     letter-spacing: .35px;
     user-select: none;
     margin-bottom: 5vh;
@@ -169,7 +169,7 @@
 }
 
 #buttonWrapper a {
-    color: black;
+    color: var(--font-color);
     text-decoration: underline;
 }
 
@@ -184,7 +184,7 @@
 }
 
 #unUpFeedback, #emUpFeedback, #emInFeedback {
-    color: red;
+    color: var(--button-bad-bg);
     font-size: 3.5vmin;
     text-align: left;
     margin: 0 0 1vh 0 !important;
@@ -196,14 +196,11 @@
     margin: 0 0 3vh 0 !important;
     font-size: 3.5vmin;
     text-align: left;
-    color: red;
+    color: var(--button-bad-bg);
 }
 
-.errorInput {
-    border-color: red !important;
-}
-.errorInput:focus {
-    border-color: red !important;
+.errorInput, .errorInput:focus {
+    border-color: var(--button-bad-bg) !important;
 }
 
 /* forgot password */
@@ -211,9 +208,9 @@
     width: 75vw;
     height: auto;
     padding: 0 5vw 2vh;
-    box-shadow: 1px 1px 9px 0px #dbdbdb;
+    box-shadow: 1px 1px 9px 0px var(--shadow-color);
     border-radius: 5px;
-    background: white;
+    background: var(--bg);
     font-size: 4vmin;
     opacity: 0;
     transform: scale(.6);
@@ -266,7 +263,7 @@
     width: 90%;
     text-align: left;
     font-size: 4vmin;
-    color: red;
+    color: var(--button-bad-bg);
 }
 
 .infoText i {
