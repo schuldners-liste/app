@@ -1,0 +1,22 @@
+:root {
+    --default: #486491;
+    --icon-color: #fff;
+    --font-color: #000;
+    --button-ok-bg: #03a87c;
+    --button-ok-color: #fff;
+    --button-bad-bg: #03a87c;
+    --button-bad-color: #fff;
+    --current-theme-icon: #17c932;
+}
+
+.light {
+    --bg: #fff;
+}
+
+.dark {
+    --bg: #282c34;
+    --bg: #21252b;
+    --bg: #333842;
+    --font-color: #ccc;
+    --icon-color: var(--icon-color);
+}
