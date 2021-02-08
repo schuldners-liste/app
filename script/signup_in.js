@@ -94,8 +94,9 @@ window.addEventListener('load', () => {
         if (email.value === '' || email.value === ' ') {
             email.classList.add('errorInput');
             fdb.textContent = 'Es muss eine E-Mail Adresse eingegeben sein.';
-        } else if (!validateEmail(email)) {
+        } else if (!validateEmail(email.value)) {
             email.classList.add('errorInput');
+            console.trace();
             fdb.textContent = 'Ungültige E-Mail Adresse.';
         } else {
             email.classList.remove('errorInput');
