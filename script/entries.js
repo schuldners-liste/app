@@ -779,6 +779,8 @@ window.addEventListener('load', () => {
                 newEntry.classList.add('entry');
                 newEntry.setAttribute('id', 'deletedOverview' + entries.name.replace(' ', ''));
                 contentWrapper.appendChild(newEntry);
+
+                calculatePersonSum(entries.name.replace(' ', ''));
             }
 
             changeTheme();
