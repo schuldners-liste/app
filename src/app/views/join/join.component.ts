@@ -23,4 +23,7 @@ export class JoinComponent implements OnInit {
     });
   }
 
+  login(): void {
+    this.router.navigateByUrl(this.redirectUrl);
+  }
 }
