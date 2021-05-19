@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase';
+import { Observable, Subject } from 'rxjs';
 import UserCredential = firebase.auth.UserCredential;
 
 @Injectable({
@@ -8,13 +9,13 @@ import UserCredential = firebase.auth.UserCredential;
 })
 export class AuthService {
 
-  private loggedIn: boolean;
+  private readonly loggedIn: Subject<boolean>;
 
   constructor(private auth: AngularFireAuth) {
-    this.loggedIn = false;
+    this.loggedIn = new Subject<boolean>();
 
     this.auth.user.subscribe(user => {
-      this.loggedIn = !!user;
+      this.loggedIn.next(!!user);
     });
   }
 
@@ -36,7 +37,7 @@ export class AuthService {
     return this.auth.signOut();
   }
 
-  public get isLoggedIn(): boolean {
+  public get isLoggedIn(): Observable<boolean> {
     return this.loggedIn;
   }
 
