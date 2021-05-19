@@ -8,13 +8,14 @@ import { HeaderService } from '../../services/header.service';
 })
 export class HeaderComponent implements OnInit {
 
-  text: string[] = [];
+  text: string;
 
   constructor(private header: HeaderService) {
+    this.text = '';
   }
 
   ngOnInit(): void {
-    this.header.text.subscribe(text => {
+    this.header.getText().subscribe(text => {
       this.text = text;
     });
   }
