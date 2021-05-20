@@ -3,6 +3,14 @@
   src: url('/assets/fonts/Roboto-Medium.ttf') format('ttf')
 }
 
+:root {
+  --primary: #486491;
+  --white: #fff;
+  --ok: #5cb45f;
+  --danger: #dc5656;
+  --box-shadow: 1px 1px 9px 0 #dbdbdb;
+}
+
 body {
   width: 100vw;
   overflow: hidden scroll;
