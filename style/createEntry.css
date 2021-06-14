@@ -204,4 +204,22 @@
         font-size: .7vw;
         right: 25vw;
     }
+
+    .selectPersonPopUp {
+        width: 30vw;
+        left: 30vw;
+        font-size: 1.2vw !important;
+    }
+
+    .selectPersonPopUp input {
+        font-size: 1vw !important;
+    }
+
+    .selectPersonPopUp .button {
+        width: 20%;
+        padding: 1vw;
+        position: relative;
+        right: 0;
+        cursor: pointer;
+    }
 }
