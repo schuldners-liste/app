@@ -15,6 +15,32 @@ body {
   margin: 0 auto;
 }
 
-:root {
+// general style
+.button {
+  padding: 10px 20px;
+  font-size: 3vw;
+  border: none;
+  border-radius: 3px;
+  box-shadow: var(--box-shadow);
+  outline: none;
 
+  &:disabled {
+    opacity: .5;
+    cursor: default;
+  }
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.btn-ok {
+  background: var(--ok);
+  color: var(--white);
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: var(--white);
 }
