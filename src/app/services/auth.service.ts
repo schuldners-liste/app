@@ -33,15 +33,15 @@ export class AuthService {
       });
   }
 
-  public signOut(): ReturnType<firebase.auth.Auth['signOut']> {
-    return this.auth.signOut();
-  }
-
-  public get isLoggedIn(): Observable<boolean> {
+  get isLoggedIn(): Observable<boolean> {
     return this.loggedIn;
   }
 
-  public signInWithEmailAndPasswort(email: string, password: string): ReturnType<firebase.auth.Auth['signInWithEmailAndPassword']> {
+  signOut(): ReturnType<firebase.auth.Auth['signOut']> {
+    return this.auth.signOut();
+  }
+
+  signInWithEmailAndPassword(email: string, password: string): ReturnType<firebase.auth.Auth['signInWithEmailAndPassword']> {
     return this.auth.signInWithEmailAndPassword(email, password);
   }
 }
