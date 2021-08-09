@@ -1,7 +1,4 @@
-@font-face {
-  font-family: 'Roboto';
-  src: url('/assets/fonts/Roboto-Medium.ttf') format('ttf')
-}
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 :root {
   --primary: #486491;
@@ -14,7 +11,7 @@
 body {
   width: 100vw;
   overflow: hidden scroll;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   margin: 0 auto;
 }
 
