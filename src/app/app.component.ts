@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     let initDone = false;
 
-    this.auth.isLoggedIn.subscribe(state => {
+    this.auth.isLoggedInState.subscribe(state => {
       let redirectUrl = '/entries';
 
       if (state) {

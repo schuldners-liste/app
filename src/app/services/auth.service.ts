@@ -9,13 +9,16 @@ import UserCredential = firebase.auth.UserCredential;
 })
 export class AuthService {
 
-  private readonly loggedIn: Subject<boolean>;
+  private readonly loggedInState: Subject<boolean>;
+  private loggedIn: boolean;
 
   constructor(private auth: AngularFireAuth) {
-    this.loggedIn = new Subject<boolean>();
+    this.loggedInState = new Subject<boolean>();
+    this.loggedIn = false;
 
     this.auth.user.subscribe(user => {
-      this.loggedIn.next(!!user);
+      this.loggedIn = !!user;
+      this.loggedInState.next(this.loggedIn);
     });
   }
 
@@ -33,7 +36,11 @@ export class AuthService {
       });
   }
 
-  get isLoggedIn(): Observable<boolean> {
+  get isLoggedInState(): Observable<boolean> {
+    return this.loggedInState;
+  }
+
+  get isLoggedIn(): boolean {
     return this.loggedIn;
   }
 
