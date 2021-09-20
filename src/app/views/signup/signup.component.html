@@ -1,0 +1,86 @@
+<h1>Schuldners Liste</h1>
+
+<form>
+  <div class="input-wrapper">
+    <label>E-Mail Adresse</label>
+    <input (keydown.enter)="signup()"
+           [class.invalid]="emailControl.errors && emailControl.touched"
+           [formControl]="emailControl"
+           name="email"
+           placeholder="E-Mail Adresse"
+           type="email">
+    <span *ngIf="emailControl.hasError('required') && emailControl.touched"
+          class="error">Email Adresse ist erforderlich</span>
+    <span *ngIf="emailControl.hasError('pattern')" class="error">Ungültige Email Adresse</span>
+  </div>
+
+  <div class="input-wrapper">
+    <label>Benutzername</label>
+    <input (keydown.enter)="signup()"
+           [class.invalid]="usernameControl.errors && usernameControl.touched"
+           [formControl]="usernameControl"
+           maxlength="20"
+           name="username"
+           placeholder="Benutzername"
+           type="text">
+    <span *ngIf="usernameControl.hasError('required') && usernameControl.touched"
+          class="error">Benutzername ist erforderlich</span>
+  </div>
+
+  <div class="input-wrapper">
+    <label>Passwort</label>
+    <input (keydown.enter)="signup()"
+           [class.invalid]="passwordControl.errors && passwordControl.touched"
+           [formControl]="passwordControl"
+           name="password"
+           placeholder="Passwort"
+           type="password">
+    <span *ngIf="passwordControl.hasError('required') && passwordControl.touched" class="error">
+      Passwort ist erforderlich
+    </span>
+    <span *ngIf="passwordControl.hasError('pattern')
+                  && passwordControl.getError('pattern').requiredPattern === '/[a-z]/'" class="error">
+      Kleinbuchstaben fehlen
+    </span>
+
+    <span *ngIf="passwordControl.hasError('pattern')
+                  && passwordControl.getError('pattern').requiredPattern === '/[A-Z]/'" class="error">
+      Großbuchstaben fehlen
+    </span>
+
+    <span *ngIf="passwordControl.hasError('pattern')
+                  && passwordControl.getError('pattern').requiredPattern === '/[0-9]/'" class="error">
+      Zahlen fehlen
+    </span>
+
+    <span *ngIf="passwordControl.hasError('minlength')" class="error">zu kurz</span>
+  </div>
+
+  <div class="input-wrapper">
+    <label>Passwort wiederholen</label>
+    <input (keydown.enter)="signup()"
+           [class.invalid]="repeatPasswordControl.errors
+           && repeatPasswordControl.touched
+           && passwordControl.value !== repeatPasswordControl.value"
+           [formControl]="repeatPasswordControl"
+           name="repeatPassword"
+           placeholder="Passwort"
+           type="password">
+    <span *ngIf="passwordControl.touched && repeatPasswordControl.value !== passwordControl.value"
+          class="error">
+      Passwörter stimmen nicht überein
+    </span>
+  </div>
+</form>
+
+<span *ngIf="responseError" class="error">{{ responseError }}</span>
+
+<div id="button-wrapper">
+  <button (click)="signup()"
+          (keydown.enter)="signup()"
+          [disabled]="!emailControl.valid || !passwordControl.valid"
+          class="button btn-primary">Registrieren
+  </button>
+</div>
+
+<span>Bereits registriert? <a class="link" routerLink="/signin">Jetzt anmelden!</a></span>
