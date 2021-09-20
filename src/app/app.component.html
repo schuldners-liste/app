@@ -1,5 +1,11 @@
-<div class="site-container">
-  <div class="page-container">
-    <router-outlet></router-outlet>
-  </div>
+<app-header *ngIf="isLoggedIn | async"></app-header>
+
+<div class="page-container">
+  <router-outlet></router-outlet>
 </div>
+
+<button (click)="signOut()" *ngIf="isLoggedIn | async" class="button btn-danger">sign out</button>
+
+<app-footer *ngIf="isLoggedIn | async"></app-footer>
+
+<app-loading *ngIf="loadingState | async"></app-loading>
