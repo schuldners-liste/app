@@ -46,3 +46,13 @@ body {
   background: var(--danger);
   color: var(--white);
 }
+
+.error {
+  color: var(--danger);
+  font-size: 3vw;
+  margin: .5vh 0 0 1vw;
+}
+
+.link {
+  color: var(--link);
+}
