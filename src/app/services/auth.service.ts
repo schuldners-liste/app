@@ -51,4 +51,43 @@ export class AuthService {
   signInWithEmailAndPassword(email: string, password: string): ReturnType<firebase.auth.Auth['signInWithEmailAndPassword']> {
     return this.auth.signInWithEmailAndPassword(email, password);
   }
+
+  signUpWithEmailAndPassword(email: string, username: string, password: string): Promise<UserCredential> {
+    return new Promise((resolve, reject) => {
+      this.auth.createUserWithEmailAndPassword(email, password).then(res => {
+        // TODO: insert stuff into db here
+        resolve(res);
+      }).catch(err => {
+        const messages: { message: string; feedback: string }[] = [
+          {
+            message: 'The password is invalid or the user does not have a password.',
+            feedback: 'Ungültiges Passwort oder E-Mail.'
+          },
+          {
+            message: 'Too many unsuccessful login attempts.  Please include reCaptcha verification or try again later',
+            feedback: 'Der Anmelde Vorgang ist zu oft fehlgeschlagen, versuchen Sie es später erneut.'
+          },
+          {
+            message: 'There is no user record corresponding to this identifier. The user may have been deleted.',
+            feedback: 'Es wurde kein Account mit der E-Mail Adresse gefunden.'
+          },
+          {
+            message: 'A network error (such as timeout, interrupted connection or unreachable host) has occurred.',
+            feedback: 'Zeitüberschreitung. Versuchen Sie es später erneut.'
+          },
+          {
+            message: 'The email address is already in use by another account.',
+            feedback: 'Die angebene E-Mail Adresse wird bereits verwendet.'
+          }
+        ];
+
+        for (const message of messages) {
+          if (err.message === message.message) {
+            err.message = message.feedback;
+          }
+        }
+        reject(err);
+      });
+    });
+  }
 }
