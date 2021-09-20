@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
 import { AuthService } from './services/auth.service';
+import { LoadingService } from './services/loading.service';
 
 @Component({
   selector: 'app-root',
@@ -9,16 +11,22 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent implements OnInit {
 
+  loadingState: Observable<boolean>;
+  isLoggedIn: Observable<boolean>;
+
   constructor(private router: Router,
               private route: ActivatedRoute,
-              public auth: AuthService) {
+              private auth: AuthService,
+              private loading: LoadingService) {
+    this.loadingState = loading.loadingState;
+    this.isLoggedIn = auth.isLoggedInState;
   }
 
   ngOnInit(): void {
-    let initDone = false;
-
     this.auth.isLoggedInState.subscribe(state => {
-      let redirectUrl = '/entries';
+      let redirectUrl: string | UrlTree = '/entries';
+
+      this.loading.activateLoading();
 
       if (state) {
         this.route.queryParams.subscribe(value => {
@@ -26,16 +34,35 @@ export class AppComponent implements OnInit {
             redirectUrl = value.redirectUrl;
           }
         });
-      } else if (initDone) {
-        redirectUrl = '/join';
+      } else {
+        if (this.router.url !== '/signup') {
+          this.route.queryParams.subscribe(value => {
+            if (value.redirectUrl) {
+              redirectUrl = this.router.createUrlTree(
+                [ '/signin' ], {
+                  queryParams: {
+                    redirectUrl: value.redirectUrl
+                  }
+                }
+              );
+            } else {
+              redirectUrl = '/signin';
+            }
+          });
+        } else {
+          redirectUrl = '/signup';
+        }
       }
 
       this.router.navigateByUrl(redirectUrl, { replaceUrl: true })
+        .then(() => this.loading.deactivateLoading())
         .catch(err => {
           console.error(err);
         });
-
-      initDone = true;
     });
+  }
+
+  signOut(): void {
+    this.auth.signOut();
   }
 }
