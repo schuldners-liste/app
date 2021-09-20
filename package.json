@@ -12,6 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~11.1.2",
+    "@angular/cdk": "^11.2.13",
     "@angular/common": "~11.1.2",
     "@angular/compiler": "~11.1.2",
     "@angular/core": "~11.1.2",
@@ -20,6 +21,10 @@
     "@angular/platform-browser": "~11.1.2",
     "@angular/platform-browser-dynamic": "~11.1.2",
     "@angular/router": "~11.1.2",
+    "@fortawesome/angular-fontawesome": "^0.8.2",
+    "@fortawesome/fontawesome-common-types": "^0.2.36",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "firebase": "^8.4.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
