@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
     if (!this.auth.isLoggedIn) {
       this.router.navigateByUrl(
         this.router.createUrlTree(
-          ['/join'], {
+          [ '/signin' ], {
             queryParams: {
               redirectUrl
             }
