@@ -54,10 +54,9 @@ export class SignupComponent implements OnInit {
 
       this.auth.signUpWithEmailAndPassword(this.emailControl.value, this.usernameControl.value, this.passwordControl.value)
         .then(res => {
-          console.log(res);
           this.responseError = undefined;
         }).catch(err => {
-        console.log(err.message);
+        this.loading.deactivateLoading();
         this.responseError = err.message;
       });
     }

@@ -19,7 +19,7 @@
   </div>
 </form>
 
-<span *ngIf="responseError" class="error">{{ responseError }}</span>
+<span *ngIf="responseError" class="error" id="responseError">{{ responseError }}</span>
 
 <div id="button-wrapper">
   <button (click)="login()" (keydown.enter)="login()" [disabled]="!emailControl.valid || !passwordControl.valid"
@@ -27,5 +27,5 @@
   </button>
 </div>
 
-<span>Noch nicht registriert? <a class="link" routerLink="/signup">Jetzt registrieren!</a></span>
+<span id="registerLink">Noch nicht registriert? <a class="link" routerLink="/signup">Jetzt registrieren!</a></span>
 <span class="link">Passwort vergessen?</span>

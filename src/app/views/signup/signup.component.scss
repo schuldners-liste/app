@@ -44,9 +44,18 @@
     }
   }
 
+  #responseError {
+    width: 80%;
+    margin-bottom: 2vh;
+  }
+
   #button-wrapper {
     width: 80%;
     display: flex;
     justify-content: flex-end;
+  }
+
+  #signinLink {
+    margin-top: 2vh;
   }
 }

@@ -73,7 +73,7 @@
   </div>
 </form>
 
-<span *ngIf="responseError" class="error">{{ responseError }}</span>
+<span *ngIf="responseError" class="error" id="responseError">{{ responseError }}</span>
 
 <div id="button-wrapper">
   <button (click)="signup()"
@@ -83,4 +83,4 @@
   </button>
 </div>
 
-<span>Bereits registriert? <a class="link" routerLink="/signin">Jetzt anmelden!</a></span>
+<span id="signinLink">Bereits registriert? <a class="link" routerLink="/signin">Jetzt anmelden!</a></span>

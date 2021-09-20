@@ -44,13 +44,18 @@
     }
   }
 
+  #responseError {
+    width: 80%;
+    margin-bottom: 2vh;
+  }
+
   #button-wrapper {
     width: 80%;
     display: flex;
     justify-content: flex-end;
   }
 
-  > span:nth-child(4) {
-    margin-top: 3vh;
+  #registerLink {
+    margin-top: 2vh;
   }
 }

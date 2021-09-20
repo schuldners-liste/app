@@ -33,10 +33,8 @@ export class SigninComponent implements OnInit {
       this.loading.activateLoading();
 
       this.auth.signInWithEmailAndPassword(this.emailControl.value, this.passwordControl.value).then(res => {
-        console.log(res);
       }).catch(err => {
         this.loading.deactivateLoading();
-        console.log(err.message);
         this.responseError = err.message;
       });
     }
