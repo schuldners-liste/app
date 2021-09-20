@@ -9,19 +9,23 @@ const routes: Routes = [
     redirectTo: 'entries'
   },
   {
-    path: 'join',
-    loadChildren: () => import('./views/join/join.module').then(m => m.JoinModule)
+    path: 'signin',
+    loadChildren: () => import('./views/signin/signin.module').then(m => m.SigninModule)
+  },
+  {
+    path: 'signup',
+    loadChildren: () => import('./views/signup/signup.module').then(m => m.SignupModule)
   },
   {
     path: 'entries',
     loadChildren: () => import('./views/entries/entries.module').then(m => m.EntriesModule),
-    canActivate: [AuthGuard]
+    canActivate: [ AuthGuard ]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [ RouterModule.forRoot(routes) ],
+  exports: [ RouterModule ]
 })
 export class AppRoutingModule {
 }
