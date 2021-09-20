@@ -24,7 +24,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, 'schuldners-liste'),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [ AppComponent ]
