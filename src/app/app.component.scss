@@ -1,0 +1,22 @@
+:host {
+  .page-container {
+    height: 83vh;
+    overflow: hidden scroll;
+  }
+
+  app-header {
+    height: 7vh;
+  }
+
+  app-footer {
+    height: 10vh;
+    position: fixed;
+    bottom: 0;
+  }
+
+  button {
+    position: fixed;
+    left: 5vw;
+    top: 83vh;
+  }
+}
