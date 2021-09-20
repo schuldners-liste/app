@@ -1,0 +1,16 @@
+:host {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+span {
+  font-weight: bold;
+  font-size: 2em;
+}
+
+fa-icon {
+  margin: 0 3vw;
+}

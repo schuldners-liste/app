@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { HeaderService } from '../../services/header.service';
 
 @Component({
@@ -9,14 +11,18 @@ import { HeaderService } from '../../services/header.service';
 export class HeaderComponent implements OnInit {
 
   text: string;
+  icon: IconProp = faBars;
 
   constructor(private header: HeaderService) {
-    this.text = '';
+    this.text = this.header.text;
   }
 
   ngOnInit(): void {
-    this.header.getText().subscribe(text => {
-      this.text = text;
+    setTimeout(() => {
+      this.header.getTextAsObservable().subscribe(text => {
+        console.log(text);
+        this.text = text;
+      });
     });
   }
 }
