@@ -1,0 +1,31 @@
+<h1>Schuldners Liste</h1>
+
+<form>
+  <div class="input-wrapper">
+    <label>E-Mail Adresse</label>
+    <input (keydown.enter)="login()" [class.invalid]="emailControl.errors && emailControl.touched"
+           [formControl]="emailControl" name="email"
+           placeholder="E-Mail Adresse" type="email">
+    <span *ngIf="emailControl.hasError('required') && emailControl.touched"
+          class="error">Email Adresse ist erforderlich</span>
+  </div>
+
+  <div class="input-wrapper">
+    <label>Passwort</label>
+    <input (keydown.enter)="login()" [class.invalid]="passwordControl.errors && passwordControl.touched"
+           [formControl]="passwordControl" name="password"
+           placeholder="Passwort" type="password">
+    <span *ngIf="passwordControl.hasError('required') && passwordControl.touched" class="error">Passwort ist erforderlich</span>
+  </div>
+</form>
+
+<span *ngIf="responseError" class="error">{{ responseError }}</span>
+
+<div id="button-wrapper">
+  <button (click)="login()" (keydown.enter)="login()" [disabled]="!emailControl.valid || !passwordControl.valid"
+          class="button btn-primary">Anmelden
+  </button>
+</div>
+
+<span>Noch nicht registriert? <a class="link" routerLink="/signup">Jetzt registrieren!</a></span>
+<span class="link">Passwort vergessen?</span>
