@@ -20,7 +20,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.header.getTextAsObservable().subscribe(text => {
-        console.log(text);
         this.text = text;
       });
     });
