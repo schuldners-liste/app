@@ -27,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: dist
-          path: schuldners-liste/dist
+          path: dist
   deploy:
     name: Deploy 🚀
     runs-on: ubuntu-latest
