@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireDatabase } from '@angular/fire/database';
 import firebase from 'firebase';
 import { Observable, Subject } from 'rxjs';
 import UserCredential = firebase.auth.UserCredential;
@@ -11,12 +12,16 @@ export class AuthService {
 
   private readonly loggedInState: Subject<boolean>;
   private loggedIn: boolean;
+  private user: firebase.User | null;
 
-  constructor(private auth: AngularFireAuth) {
+  constructor(private auth: AngularFireAuth,
+              private db: AngularFireDatabase) {
     this.loggedInState = new Subject<boolean>();
     this.loggedIn = false;
+    this.user = null;
 
     this.auth.user.subscribe(user => {
+      this.user = user;
       this.loggedIn = !!user;
       this.loggedInState.next(this.loggedIn);
     });
@@ -44,6 +49,14 @@ export class AuthService {
     return this.loggedIn;
   }
 
+  get uid(): string | null {
+    if (this.user) {
+      return this.user.uid;
+    } else {
+      return null;
+    }
+  }
+
   signOut(): ReturnType<firebase.auth.Auth['signOut']> {
     return this.auth.signOut();
   }
@@ -59,8 +72,15 @@ export class AuthService {
   signUpWithEmailAndPassword(email: string, username: string, password: string): Promise<UserCredential> {
     return new Promise((resolve, reject) => {
       this.auth.createUserWithEmailAndPassword(email, password).then(res => {
-        // TODO: insert stuff into db here
-        resolve(res);
+        this.db.object(`users/${ res.user?.uid }/userdata`).set({
+          email,
+          username,
+          lang: 'en'
+        }).then(() => {
+          resolve(res);
+        }).catch(err => {
+          reject(`persist failed: ${err.message}`);
+        });
       }).catch(err => {
         reject(this.getCustomizedErrorMessage(err));
       });
