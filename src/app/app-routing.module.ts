@@ -4,11 +4,6 @@ import { AuthGuard } from './services/auth-guard/auth.guard';
 
 const routes: Routes = [
   {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'entries'
-  },
-  {
     path: 'signin',
     loadChildren: () => import('./views/signin/signin.module').then(m => m.SigninModule)
   },
@@ -20,6 +15,21 @@ const routes: Routes = [
     path: 'debtors',
     loadChildren: () => import('./views/debtors/debtors.module').then(m => m.DebtorsModule),
     canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'create',
+    loadChildren: () => import('./views/create/create.module').then(m => m.CreateModule),
+    canActivate: [ AuthGuard ]
+  },
+  {
+    path: '',
+    redirectTo: 'debtors',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    redirectTo: 'debtors',
+    pathMatch: 'full'
   }
 ];
 
