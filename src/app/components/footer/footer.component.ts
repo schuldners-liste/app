@@ -19,7 +19,7 @@ export class FooterComponent implements OnInit {
       icon: faClipboardList
     },
     {
-      url: '',
+      url: '/create',
       icon: faPlus
     }
   ];
