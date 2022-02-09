@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from './services/auth.service';
 import { LoadingService } from './services/loading.service';
+import { DebtorService } from './services/debtor.service';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,8 @@ export class AppComponent implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private auth: AuthService,
-              private loading: LoadingService) {
+              private loading: LoadingService,
+              private entryService: DebtorService) {
     this.loadingState = loading.loadingState;
     this.isLoggedIn = auth.isLoggedInState;
   }
@@ -29,6 +31,8 @@ export class AppComponent implements OnInit {
       this.loading.activateLoading();
 
       if (state) {
+        this.entryService.fetchEntries();
+
         this.route.queryParams.subscribe(value => {
           if (value.redirectUrl) {
             redirectUrl = value.redirectUrl;
