@@ -1,0 +1,26 @@
+@import "src/assets/scss/form";
+
+:host {
+  display: flex;
+  width: 70vw;
+  height: 50vh;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden scroll;
+
+  form {
+    width: 80%;
+    height: 80%;
+
+    .input-wrapper {
+      width: 100%;
+    }
+  }
+}
+
+#button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
