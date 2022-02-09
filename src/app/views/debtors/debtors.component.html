@@ -1,0 +1,9 @@
+<div *ngFor="let d of debtors" [routerLink]="d.name.toLowerCase()" class="debtor">
+  <span class="name">{{ d.name }}</span>
+  <span class="amount">{{ calculateTotalAmount(d.entries) | amount }}€</span>
+  <mat-icon>keyboard_arrow_right</mat-icon>
+</div>
+
+<span *ngIf="debtors?.length === 0" class="error">
+  <span>No debtors found</span>
+</span>
