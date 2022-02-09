@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -25,9 +27,11 @@ import { LoadingComponent } from './components/loading/loading.component';
     AngularFireModule.initializeApp(environment.firebaseConfig, 'schuldners-liste'),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [ { provide: LocationStrategy, useClass: HashLocationStrategy } ],
+  exports: [],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {
