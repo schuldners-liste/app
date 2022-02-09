@@ -93,3 +93,5 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/adobe,windows,linux,macos,visualstudiocode
 node_modules
+
+dist
