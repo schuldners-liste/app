@@ -4,6 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateComponent } from './create.component';
 import { AutocompleteModule } from '../../components/autocomplete/autocomplete.module';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
 
 const routes: Routes = [
   {
@@ -31,7 +33,9 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
-    AutocompleteModule
+    AutocompleteModule,
+    MatChipsModule,
+    MatIconModule
   ]
 })
 export class CreateModule {

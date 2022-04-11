@@ -5,20 +5,38 @@
 
 <form>
   <div class="input-wrapper">
-    <label>Debtor</label>
-    <input (blur)="handleBlur()"
-           (focus)="autocompleteState = true"
-           [class.invalid]="debtorControl.errors && debtorControl.touched"
-           [formControl]="debtorControl"
-           autocomplete="off"
-           name="debtor"
-           placeholder="Debtor"
-           type="text">
-    <span *ngIf="debtorControl.hasError('required') && debtorControl.touched && !autocompleteState"
-          class="error">Debtor must not be empty</span>
+    <label>Debtors</label>
+    <mat-chip-list #chipList>
+      <div id="chips-wrapper">
+        <mat-chip *ngFor="let d of selectedDebtors" (removed)="removeSelectedDebtor(d)">
+          {{ d }}
 
-    <app-autocomplete (selectedValue)="debtorControl.setValue($event)" *ngIf="autocompleteState"
-                      [currentValue]="debtorControl.value" [options]="autocompleteOptions"></app-autocomplete>
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+      </div>
+
+      <input
+        (blur)="handleBlur()"
+        (focus)="autocompleteState = true"
+        [class.invalid]="debtorControl.errors && debtorControl.touched"
+        [formControl]="debtorControl"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event.value)"
+        placeholder="Debtor"
+        autocomplete="off"
+        name="debtor"
+        type="text">
+    </mat-chip-list>
+
+    <span *ngIf="debtorControl.errors && debtorControl.touched && !autocompleteState"
+          class="error">Debtors must not be empty</span>
+
+    <app-autocomplete *ngIf="autocompleteState"
+                      (selectedValue)="add($event)"
+                      [currentValue]="debtorControl.value"
+                      [options]="autocompleteOptions">
+    </app-autocomplete>
   </div>
 
   <div class="input-wrapper">
@@ -28,6 +46,7 @@
       [formControl]="dateControl"
       name="date"
       placeholder="Date"
+      autocomplete="off"
       type="date">
     <span *ngIf="dateControl.hasError('required') && dateControl.touched"
           class="error">Date must not be empty</span>
@@ -39,6 +58,7 @@
            [formControl]="repeatControl"
            name="repeats"
            placeholder="Repeats"
+           autocomplete="off"
            type="text">
     <span *ngIf="repeatControl.hasError('required') && repeatControl.touched"
           class="error">Repeats must not be empty</span>
@@ -50,6 +70,7 @@
            [formControl]="reasonControl"
            name="repeats"
            placeholder="Reason"
+           autocomplete="off"
            type="text">
     <span *ngIf="reasonControl.hasError('required') && reasonControl.touched"
           class="error">Reason must not be empty</span>
@@ -68,7 +89,10 @@
     <label>Amount</label>
     <input [class.invalid]="amountControl.errors && amountControl.touched"
            [formControl]="amountControl"
-           name="repeats" placeholder="Amount" type="number">
+           name="repeats"
+           placeholder="Amount"
+           autocomplete="off"
+           type="number">
     <span *ngIf="amountControl.hasError('required') && amountControl.touched"
           class="error">Amount must not be empty</span>
   </div>

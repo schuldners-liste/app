@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Entry } from '../../models/models';
 import { DebtorService } from '../../services/debtor.service';
 import { HeaderService } from '../../services/header.service';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { CustomValidators } from '../../helpers/custom-validators';
 
 @Component({
   selector: 'app-create',
@@ -21,6 +23,8 @@ export class CreateComponent implements OnInit {
   amountControl: FormControl;
   autocompleteState: boolean;
   autocompleteOptions: string[];
+  selectedDebtors: string[];
+  separatorKeysCodes: number[];
 
   constructor(private header: HeaderService,
               private route: ActivatedRoute,
@@ -28,10 +32,10 @@ export class CreateComponent implements OnInit {
     this.isMoney = false;
     this.autocompleteState = false;
     this.autocompleteOptions = [];
+    this.selectedDebtors = [];
+    this.separatorKeysCodes = [ ENTER, COMMA ];
 
-    this.debtorControl = new FormControl('', [
-      Validators.required
-    ]);
+    this.debtorControl = new FormControl('', CustomValidators.debtorsAmountValidator(this.selectedDebtors));
 
     this.dateControl = new FormControl(this.currentDate, [
       Validators.required
@@ -84,7 +88,7 @@ export class CreateComponent implements OnInit {
         repeat: {},
         restored: false,
         edited: false,
-        deleted: false,
+        deleted: false
       };
 
       if (!this.isMoney) {
@@ -93,7 +97,9 @@ export class CreateComponent implements OnInit {
 
       console.log(entry);
 
-      this.entryService.create(entry, this.debtorControl.value).then(console.log);
+      this.selectedDebtors.forEach(debtor => {
+        this.entryService.create(entry, debtor).then(console.log);
+      });
     }
   }
 
@@ -110,5 +116,23 @@ export class CreateComponent implements OnInit {
     setTimeout(() => {
       this.autocompleteState = false;
     });
+  }
+
+  removeSelectedDebtor(debtorName: string): void {
+    const index = this.selectedDebtors.indexOf(debtorName);
+
+    if (index >= 0) {
+      this.autocompleteOptions.push(debtorName);
+      this.selectedDebtors.splice(index, 1);
+      this.debtorControl.setValue(this.debtorControl.value);
+    }
+  }
+
+  add(value: string): void {
+    if (value.trim() && !this.selectedDebtors.includes(value)) {
+      this.autocompleteOptions = this.autocompleteOptions.filter(option => option !== value);
+      this.selectedDebtors.push(value.trim());
+      this.debtorControl.setValue('');
+    }
   }
 }
