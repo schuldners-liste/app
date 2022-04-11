@@ -56,3 +56,7 @@ body {
 .link {
   color: var(--link);
 }
+
+mat-chip-list .mat-chip-list-wrapper {
+  display: block;
+}
