@@ -12,7 +12,7 @@ export class DebtorsComponent implements OnInit {
 
   debtors: Debtor[] | null;
 
-  constructor(private header: HeaderService,
+  constructor(private readonly header: HeaderService,
               private readonly entryService: DebtorService) {
     this.debtors = null;
   }
