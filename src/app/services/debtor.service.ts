@@ -40,7 +40,7 @@ export class DebtorService {
     return this.debtorSubject.asObservable();
   }
 
-  create(entry: Entry, debtor: string): Promise<void> {
+  create(entry: Entry, debtor: string): Promise<string> {
     return new Promise((resolve, reject) => {
       this.db.object(`users/${ this.auth.uid }/debtors/${ debtor }/entries/${ entry.id }`)
         .set(entry)
@@ -48,7 +48,7 @@ export class DebtorService {
           this.db.object(`users/${ this.auth.uid }/debtors/${ debtor }/name`)
             .set(debtor)
             .then(() => {
-              resolve();
+              resolve(`Entry for ${debtor} is created`);
             });
         })
         .catch(reason => {
