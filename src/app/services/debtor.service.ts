@@ -72,7 +72,7 @@ export class DebtorService {
       subscriber.next(this.debtorSubject.value.find(debtor => debtor.name.toLowerCase() === debtorName) || null);
 
       this.getDebtors().subscribe(debtors => {
-        subscriber.next(debtors.find(debtor => debtor.name.toLowerCase() === debtorName) || null);
+        subscriber.next(debtors.find(debtor => debtor?.name.toLowerCase() === debtorName) || null);
       });
     });
   }
