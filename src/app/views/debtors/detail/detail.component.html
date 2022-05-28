@@ -14,7 +14,12 @@
   </div>
 
   <div class="icon-wrapper">
-    <mat-icon (click)="delete(e)" color="warn">delete</mat-icon>
-    <mat-icon (click)="openDialog(e)" color="primary">edit</mat-icon>
+    <button id="delete-btn" mat-icon-button>
+      <mat-icon (click)="delete(e)">delete</mat-icon>
+    </button>
+
+    <button id="update-btn" mat-icon-button>
+      <mat-icon (click)="openDialog(e)">edit</mat-icon>
+    </button>
   </div>
 </div>
