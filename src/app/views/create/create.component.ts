@@ -98,10 +98,12 @@ export class CreateComponent implements OnInit {
         entry.object = this.objectControl.value as string;
       }
 
-      console.log(entry);
-
       this.selectedDebtors.forEach(debtor => {
-        this.entryService.create(entry, debtor).then(console.log);
+        this.entryService.create(entry, debtor).then(() => {
+          this.feedbackService.showInfoEvent('Entry created', false);
+
+          this.router.navigateByUrl('/debtors');
+        });
       });
     }
   }
