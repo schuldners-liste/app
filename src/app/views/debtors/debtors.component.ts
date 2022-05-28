@@ -28,6 +28,8 @@ export class DebtorsComponent implements OnInit {
   }
 
   calculateTotalAmount(entries: Entry[]): number {
-    return entries.reduce((acc, entry) => acc + entry.amount, 0);
+    return entries
+      .filter(entry => !entry.deleted)
+      .reduce((acc, entry) => acc + entry.amount, 0);
   }
 }
