@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderService } from '../../../services/header.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EditComponent } from '../edit/edit.component';
+import { FeedbackService } from '../../../services/feedback.service';
 
 @Component({
   selector: 'app-detail',
@@ -21,7 +22,8 @@ export class DetailComponent implements OnInit {
               private readonly debtorService: DebtorService,
               private readonly route: ActivatedRoute,
               private readonly router: Router,
-              private readonly dialog: MatDialog) {
+              private readonly dialog: MatDialog,
+              private readonly feedback: FeedbackService) {
     this.debtor = null;
     this.searchCondition = '';
     this.entries = [];
@@ -53,14 +55,18 @@ export class DetailComponent implements OnInit {
       data: entry
     }).afterClosed().subscribe(result => {
       if (result && this.debtor) {
-        this.debtorService.update(this.debtor.name, result);
+        this.debtorService.update(this.debtor.name, result)
+          .then(() => this.feedback.showInfoEvent('Entry updated', false))
+          .catch(() => this.feedback.showInfoEvent('Update failed', true));
       }
     });
   }
 
   public delete(entry: Entry): void {
     if (this.debtor) {
-      this.debtorService.delete(this.debtor.name, entry.id);
+      this.debtorService.delete(this.debtor.name, entry.id).then(() => {
+        this.feedback.showInfoEvent('Entry deleted', false);
+      });
     }
   }
 
@@ -81,7 +87,7 @@ export class DetailComponent implements OnInit {
   public searchConditionChange(): void {
     if (this.debtor) {
       this.entries = this.debtor?.entries.filter(e => {
-        return !!(e.object?.toLowerCase().includes(this.searchCondition.toLowerCase())
+        return (e.object?.toLowerCase().includes(this.searchCondition.toLowerCase())
           || e.date.toLowerCase().includes(this.searchCondition.toLowerCase())
           || e.reason.toLowerCase().includes(this.searchCondition.toLowerCase())
           || e.amount.toString().toLowerCase().includes(this.searchCondition.toLowerCase()));
