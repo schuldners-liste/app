@@ -14,3 +14,8 @@ export interface Debtor {
   entries: Entry[];
   name: string;
 }
+
+export interface Feedback {
+  text: string;
+  errorFeedback: boolean;
+}
