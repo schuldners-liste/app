@@ -80,7 +80,10 @@
     <label>Object</label>
     <input [class.invalid]="objectControl.errors && objectControl.touched"
            [formControl]="objectControl"
-           name="object" placeholder="Object" type="text">
+           autocomplete="off"
+           name="object"
+           placeholder="Object"
+           type="text">
     <span *ngIf="objectControl.hasError('required') && objectControl.touched"
           class="error">Object must not be empty</span>
   </div>
