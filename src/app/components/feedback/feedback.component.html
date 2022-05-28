@@ -1,0 +1,6 @@
+<div *ngFor="let item of data" [class.error]="item.errorFeedback" class="feedback">
+  <mat-icon *ngIf="!item.errorFeedback">done</mat-icon>
+  <mat-icon *ngIf="item.errorFeedback">error</mat-icon>
+  <span class="text">{{ item.text }}</span>
+</div>
+
