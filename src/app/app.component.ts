@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from './services/auth.service';
 import { LoadingService } from './services/loading.service';
 import { DebtorService } from './services/debtor.service';
+import { FeedbackService } from './services/feedback.service';
 
 @Component({
   selector: 'app-root',
@@ -12,14 +13,15 @@ import { DebtorService } from './services/debtor.service';
 })
 export class AppComponent implements OnInit {
 
-  loadingState: Observable<boolean>;
-  isLoggedIn: Observable<boolean>;
+  public loadingState: Observable<boolean>;
+  public isLoggedIn: Observable<boolean>;
 
-  constructor(private router: Router,
-              private route: ActivatedRoute,
-              private auth: AuthService,
-              private loading: LoadingService,
-              private entryService: DebtorService) {
+  constructor(private readonly router: Router,
+              private readonly route: ActivatedRoute,
+              private readonly auth: AuthService,
+              private readonly loading: LoadingService,
+              private readonly feedbackService: FeedbackService,
+              private readonly entryService: DebtorService) {
     this.loadingState = loading.loadingState;
     this.isLoggedIn = auth.isLoggedInState;
   }

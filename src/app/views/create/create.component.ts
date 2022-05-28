@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Entry } from '../../models/models';
 import { DebtorService } from '../../services/debtor.service';
 import { HeaderService } from '../../services/header.service';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { CustomValidators } from '../../helpers/custom-validators';
+import { FeedbackService } from '../../services/feedback.service';
 
 @Component({
   selector: 'app-create',
@@ -26,9 +27,11 @@ export class CreateComponent implements OnInit {
   selectedDebtors: string[];
   separatorKeysCodes: number[];
 
-  constructor(private header: HeaderService,
-              private route: ActivatedRoute,
-              private entryService: DebtorService) {
+  constructor(private readonly header: HeaderService,
+              private readonly route: ActivatedRoute,
+              private readonly router: Router,
+              private readonly feedbackService: FeedbackService,
+              private readonly entryService: DebtorService) {
     this.isMoney = false;
     this.autocompleteState = false;
     this.autocompleteOptions = [];
