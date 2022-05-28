@@ -57,6 +57,20 @@ body {
   color: var(--link);
 }
 
+// angular material overwrites
+
+// mat-chip-list
 mat-chip-list .mat-chip-list-wrapper {
   display: block;
+}
+
+// mat-snackbar
+.mat-snack-bar-container {
+  background: transparent;
+  box-shadow: none;
+}
+
+// mat-dialog
+.mat-dialog-container {
+  overflow: hidden !important;
 }
