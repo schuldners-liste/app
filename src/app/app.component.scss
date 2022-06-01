@@ -4,6 +4,14 @@
     overflow: hidden scroll;
   }
 
+  mat-drawer-container {
+    height: 100vh;
+
+    mat-drawer {
+      width: 75vw;
+    }
+  }
+
   app-header {
     height: 7vh;
   }
