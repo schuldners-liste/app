@@ -8,10 +8,12 @@ export class HeaderService {
 
   private currentText: string;
   private readonly headerText: Subject<string>;
+  private readonly barsClickedSubject: Subject<void>;
 
   constructor() {
     this.currentText = '';
     this.headerText = new Subject<string>();
+    this.barsClickedSubject = new Subject<void>();
   }
 
   public get text(): string {
@@ -25,5 +27,13 @@ export class HeaderService {
 
   public getTextAsObservable(): Observable<string> {
     return this.headerText;
+  }
+
+  public clickBars(): void {
+    this.barsClickedSubject.next();
+  }
+
+  public getBarsClickedAsObservable(): Observable<void> {
+    return this.barsClickedSubject;
   }
 }

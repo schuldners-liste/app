@@ -24,4 +24,8 @@ export class HeaderComponent implements OnInit {
       });
     });
   }
+
+  public clickBars(): void {
+    this.header.clickBars();
+  }
 }
