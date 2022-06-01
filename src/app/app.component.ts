@@ -5,6 +5,7 @@ import { AuthService } from './services/auth.service';
 import { LoadingService } from './services/loading.service';
 import { DebtorService } from './services/debtor.service';
 import { FeedbackService } from './services/feedback.service';
+import { HeaderService } from './services/header.service';
 
 @Component({
   selector: 'app-root',
@@ -15,15 +16,18 @@ export class AppComponent implements OnInit {
 
   public loadingState: Observable<boolean>;
   public isLoggedIn: Observable<boolean>;
+  public isNavOpen: boolean;
 
   constructor(private readonly router: Router,
               private readonly route: ActivatedRoute,
               private readonly auth: AuthService,
               private readonly loading: LoadingService,
               private readonly feedbackService: FeedbackService,
-              private readonly entryService: DebtorService) {
+              private readonly entryService: DebtorService,
+              private readonly header: HeaderService) {
     this.loadingState = loading.loadingState;
     this.isLoggedIn = auth.isLoggedInState;
+    this.isNavOpen = false;
   }
 
   ngOnInit(): void {
@@ -31,6 +35,7 @@ export class AppComponent implements OnInit {
       let redirectUrl: string | UrlTree = '/entries';
 
       this.loading.activateLoading();
+      this.isNavOpen = false;
 
       if (state) {
         this.entryService.fetchEntries();
@@ -66,9 +71,9 @@ export class AppComponent implements OnInit {
           console.error(err);
         });
     });
-  }
 
-  signOut(): void {
-    this.auth.signOut();
+    this.header.getBarsClickedAsObservable().subscribe(() => {
+      this.isNavOpen = !this.isNavOpen;
+    });
   }
 }
