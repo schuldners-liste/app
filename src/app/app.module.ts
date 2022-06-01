@@ -16,6 +16,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NavComponent } from './components/nav/nav.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     HeaderComponent,
     LoadingComponent,
     FooterComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     FontAwesomeModule,
     BrowserAnimationsModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSidenavModule
   ],
   providers: [ { provide: LocationStrategy, useClass: HashLocationStrategy } ],
   exports: [],
