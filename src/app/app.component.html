@@ -1,11 +1,17 @@
-<app-header *ngIf="isLoggedIn | async"></app-header>
+<mat-drawer-container [autosize]="true" [hasBackdrop]="true">
+  <mat-drawer [(opened)]="isNavOpen">
+    <app-nav></app-nav>
+  </mat-drawer>
 
-<div class="page-container">
-  <router-outlet></router-outlet>
-</div>
+  <mat-drawer-content>
+    <app-header *ngIf="isLoggedIn | async"></app-header>
 
-<button (click)="signOut()" *ngIf="isLoggedIn | async" class="button btn-danger">sign out</button>
+    <div class="page-container">
+      <router-outlet></router-outlet>
+    </div>
 
-<app-footer *ngIf="isLoggedIn | async"></app-footer>
+    <app-footer *ngIf="isLoggedIn | async"></app-footer>
+  </mat-drawer-content>
+</mat-drawer-container>
 
 <app-loading *ngIf="loadingState | async"></app-loading>
